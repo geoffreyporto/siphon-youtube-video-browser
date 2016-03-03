@@ -1,0 +1,20 @@
+{
+  "name": "siphon-youtube-video-browser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ios.js",
+  "dependencies": {
+    "xmldom": "^0.1.22"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getsiphon/siphon-youtube-video-browser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/getsiphon/siphon-youtube-video-browser/issues"
+  },
+  "homepage": "https://github.com/getsiphon/siphon-youtube-video-browser#readme"
+}
