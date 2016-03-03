@@ -7,7 +7,8 @@ var {
   View,
   Text,
   ScrollView,
-  Image
+  Image,
+  TouchableOpacity
 } = React;
 
 var DOMParser = require('xmldom').DOMParser;
@@ -54,15 +55,26 @@ var App = React.createClass({
   componentDidMount: function() {
     this.fetchVideos();
   },
+  onPressVideo: function(videoID) {
+    console.log('GO -- ', videoID);
+  },
   render: function() {
     return (
-      <View>
+      <ScrollView>
         {
           this.state.videos.map(video => {
-            return <Text>{video.id}</Text>
+            return (
+              <TouchableOpacity onPress={() => this.onPressVideo(video.id)}>
+                <Image
+                  source={{uri: video.thumbnail}}
+                  style={{width: 200, height: 200}}
+                  resizeMode={Image.resizeMode.cover}
+                />
+              </TouchableOpacity>
+            )
           })
         }
-      </View>
+      </ScrollView>
     );
   }
 });
