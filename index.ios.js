@@ -16,6 +16,11 @@ var FEED_URL = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PL8B03F9989
 
 
 var App = React.createClass({
+  getInitialState: function() {
+    return {
+      videos: []
+    }
+  },
   parseVideos: function(s) {
     console.log('Parsing the feed...');
     var doc = new DOMParser().parseFromString(s, 'text/xml');
@@ -29,11 +34,11 @@ var App = React.createClass({
           thumbnail: thumbs[i].getAttribute('url')
         })
       }
+      this.setState({videos: objs});
     } catch(error) {
+      // TODO: remove this
       console.log('Error parsing the feed: ', error);
     }
-
-
   },
   fetchVideos: function() {
     console.log('Fetching video feed...');
@@ -46,13 +51,17 @@ var App = React.createClass({
         console.log('Error fetching the feed: ', error);
       });
   },
-  render: function() {
+  componentDidMount: function() {
     this.fetchVideos();
+  },
+  render: function() {
     return (
       <View>
-        <Text>
-          Hello.
-        </Text>
+        {
+          this.state.videos.map(video => {
+            return <Text>{video.id}</Text>
+          })
+        }
       </View>
     );
   }
