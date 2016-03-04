@@ -24,18 +24,13 @@ var VideoListView = React.createClass({
     var objs = [];
     var videos = doc.getElementsByTagName('yt:videoId');
     var thumbs = doc.getElementsByTagName('media:thumbnail');
-    try {
-      for (var i=0; i < videos.length; i++) {
-        objs.push({
-          id: videos[i].textContent,
-          thumbnail: thumbs[i].getAttribute('url')
-        })
-      }
-      this.setState({videos: objs});
-    } catch(error) {
-      // TODO: remove this
-      console.log('Error parsing the feed: ', error);
+    for (var i=0; i < videos.length; i++) {
+      objs.push({
+        id: videos[i].textContent,
+        thumbnail: thumbs[i].getAttribute('url')
+      })
     }
+    this.setState({videos: objs});
   },
   fetchVideos: function() {
     console.log('Fetching video feed...');
