@@ -55,7 +55,8 @@ var VideoListView = React.createClass({
     this.fetchVideos();
   },
   onPressVideo: function(videoID) {
-    console.log('GO -- ', videoID);
+    console.log('Pressed video: ', videoID);
+    this.props.navigator.push({name: 'player', videoID: videoID});
   },
   render: function() {
     return (
