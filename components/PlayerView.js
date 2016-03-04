@@ -20,10 +20,15 @@ var PlayerView = React.createClass({
           hidden={false}
           playsInline={true}
           onError={(e) => { alert(e.error) }}
-          style={{alignSelf: 'stretch', height: 300, backgroundColor: 'black', marginVertical: 10}}
+          style={{
+            alignSelf: 'stretch',
+            height: 300,
+            backgroundColor: 'black',
+            marginVertical: 10
+          }}
         />
         <TouchableOpacity onPress={() => this.props.navigator.pop()}>
-          <Text style={{ color: 'yellow' }}>Close this video</Text>
+          <Text style={{ color: '#40b2bf' }}>Close this video</Text>
         </TouchableOpacity>
       </View>
     );
