@@ -11,9 +11,6 @@ var {
 
 var DOMParser = require('xmldom').DOMParser;
 
-var FEED_URL = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PL8B03F998924DA45B';
-
-// TODO: pass feed URL as a prop
 
 var VideoListView = React.createClass({
   getInitialState: function() {
@@ -42,7 +39,9 @@ var VideoListView = React.createClass({
   },
   fetchVideos: function() {
     console.log('Fetching video feed...');
-    fetch(FEED_URL)
+    var url = "https://www.youtube.com/feeds/videos.xml?playlist_id=" +
+      this.props.playlistID;
+    fetch(url)
       .then((response) => response.text())
       .then((responseText) => {
         this.parseVideos(responseText);
@@ -67,7 +66,7 @@ var VideoListView = React.createClass({
               <TouchableOpacity onPress={() => this.onPressVideo(video.id)}>
                 <Image
                   source={{uri: video.thumbnail}}
-                  style={{width: 200, height: 200}}
+                  style={{height: 280}}
                   resizeMode={Image.resizeMode.cover}
                 />
               </TouchableOpacity>
