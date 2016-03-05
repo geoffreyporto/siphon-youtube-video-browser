@@ -3,9 +3,6 @@
 var React = require('react-native');
 var {
   AppRegistry,
-  StyleSheet,
-  View,
-  Text,
   Navigator
 } = React;
 
