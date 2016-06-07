@@ -56,9 +56,10 @@ var VideoListView = React.createClass({
     return (
       <ScrollView>
         {
-          this.state.videos.map(video => {
+          this.state.videos.map((video, i) => {
             return (
-              <TouchableOpacity onPress={() => this.onPressVideo(video.id)}>
+              <TouchableOpacity onPress={() => this.onPressVideo(video.id)}
+                key={i.toString()}>
                 <Image
                   source={{uri: video.thumbnail}}
                   style={{height: 280}}
